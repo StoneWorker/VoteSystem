@@ -1,0 +1,53 @@
+
+
+
+<div class="container" >
+
+<div *ngIf="displaySummary===true">
+  <div *ngIf="dates.length > 0">
+    <h3> Dates:</h3>
+    <div *ngFor="let date of dates">
+      <div>{{date.name}}: {{date.votedNumber}}</div>    
+      <div class="progress div1">      
+        <div class="progress-bar" [ngStyle]="{'width':getPercentString(date.votedNumber,totalDatesVotedNumber)}"></div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="places.length > 0">
+    <h3> Places:</h3>
+    <div *ngFor="let place of places">
+      <div>{{place.name}}: {{place.votedNumber}}</div>    
+      <div class="progress div1">      
+        <div class="progress-bar div2" [ngStyle]="{'width':getPercentString(place.votedNumber,totalPlacesVotedNumber)}"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="displaySummary===false">
+  <h3> All votes:</h3>
+  <table width="100%" border="3">
+    <tr>
+      <th>Name</th>
+      <th>SelectedDate</th>
+      <th>SelectedPlace</th>
+      <th>Voted?</th>
+    </tr>
+    <tr *ngFor="let user of users">
+     <td>{{user.name}}</td>
+     <td>{{user.selectedDate}}</td>
+     <td>{{user.selectedPlace}}</td>
+     <td>{{user.voted}}</td>
+   </tr>
+  </table>
+</div>
+
+<br>
+<button title="Refresh" class="btn btn-success" (click)="refresh()" >Refresh</button>
+<button class="btn btn-success" (click)="changeView()" >{{displayView}}</button>
+<button title="Logout" class="btn btn-success" (click)="logout()" >Logout</button> 
+<button *ngIf="voteService.user.voted===false" title="Go to vote" class="btn btn-success" (click)="goVote()" >Go to Vote!</button>
+
+
+</div>

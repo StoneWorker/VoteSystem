@@ -1,0 +1,39 @@
+<div class="container">
+
+  <form #VoteForm="ngForm">  
+    <div class="form-group">        
+      <label for="Date">Please select date:</label>
+      <select class="form-control" id="Date" required [(ngModel)]="selectedDate.name" name="Date" #date1="ngModel">
+        <option *ngFor="let date of dates" [value]="date.name">{{date.name}}</option>
+      </select>
+      <div *ngIf="date1.invalid && (date1.dirty || date1.touched)" class="alert alert-danger">
+        <div *ngIf="date1.errors.required">Date is required.</div>
+      </div>      
+      <br>
+      <label>Add a date:  
+        <input #newDate/>
+      </label>
+      <button (click)="addDate(newDate.value); newDate.value=''" class="btn btn-success">Add</button>
+    </div>
+    <div class="form-group">      
+      <label for="place">Please select place:</label>
+      <select class="form-control" id="place" required [(ngModel)]="selectedPlace.name" name="place" #place1="ngModel">
+        <option *ngFor="let place of places" [value]="place.name">{{place.name}}</option>
+      </select>
+      <div *ngIf="place1.invalid && (place1.dirty || place1.touched)" class="alert alert-danger">
+        <div *ngIf="place1.errors.required">place is required.</div>
+      </div>      
+      <br>
+      <label>Add a place:
+          <input #newPlace/>
+      </label>
+      <button (click)="addPlace(newPlace.value); newPlace.value=''" class="btn btn-success">Add</button>
+    </div>
+    <button (click)="vote()" class="btn btn-success" [disabled]="!VoteForm.form.valid" title="Vote" >Vote</button>    
+    <button title="Logout" class="btn btn-success" (click)="logout()" >Logout</button> 
+  </form>
+
+  
+
+</div>
+

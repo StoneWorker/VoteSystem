@@ -1,0 +1,29 @@
+table {    
+    color: rgb(37, 25, 216);
+    background-color: rgb(243, 242, 226);    
+}
+
+tr:hover {
+    background-color: #cfd8dc;   
+}
+
+.td1 {
+    color: rgb(51, 233, 81);
+    background-color:rgb(51, 233, 81);        
+}
+
+.div1 {    
+    background-color:rgb(183, 180, 187);  
+    width: 100%;    
+}
+
+.div2 {    
+    background-color:rgb(21, 197, 115);         
+}
+
+h3,div {
+  color: blue;
+}
+
+
+
