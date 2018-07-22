@@ -39,7 +39,8 @@ export class VoteComponent implements OnInit {
     if(this.voteService.user.voted === false){
       this.voteService.user.voted = true;
       this.voteService.user.selectedDate = this.selectedDate.name;
-      this.voteService.user.selectedPlace = this.selectedPlace.name;   
+      this.voteService.user.selectedPlace = this.selectedPlace.name;  
+      this.voteService.updateSessionStorage(this.voteService.user); 
       this.voteService.updateUser(this.voteService.user).subscribe();
       this.dates.forEach(date =>{
         if(date.name === this.selectedDate.name){

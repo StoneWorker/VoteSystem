@@ -12,9 +12,11 @@ const httpOptions = {
 @Injectable()
 export class VoteService implements CanActivate{
 
-  isLoggedIn: boolean = false;
+  //isLoggedIn: boolean = false;
+  isLoggedIn : boolean = sessionStorage['isLoggedIn']!=null?JSON.parse(sessionStorage['isLoggedIn']):false;
   redirectUrl: string ="vote";
-  user: User;  
+  //user: User; 
+  user: User = sessionStorage['user']!=null?JSON.parse(sessionStorage['user']):null;
   userIndex: number;
 
   canActivate(route: ActivatedRouteSnapshot,state: RouterStateSnapshot): boolean {
@@ -32,7 +34,8 @@ export class VoteService implements CanActivate{
         if(this.userIndex>-1){  
           console.log('success login');        
           this.user = users[this.userIndex];
-          this.isLoggedIn = true;          
+          this.isLoggedIn = true; 
+          this.updateSessionStorage(this.user,this.isLoggedIn);
           this.router.navigate([this.redirectUrl]);
           console.log(this.user);
           return true;
@@ -42,6 +45,12 @@ export class VoteService implements CanActivate{
         }         
     });    
     return false; 
+  }
+
+  updateSessionStorage(user:User,isLoggedIn?:boolean){
+    sessionStorage.setItem('user', JSON.stringify(user));
+    if(isLoggedIn!=null)
+    sessionStorage.setItem('isLoggedIn', JSON.stringify(isLoggedIn));
   }
 
   getUsers():Observable<User[]>{
@@ -84,6 +93,8 @@ export class VoteService implements CanActivate{
   logout(){
     this.isLoggedIn = false;
     this.user = null;
+    sessionStorage.removeItem('user');
+    sessionStorage.removeItem('isLoggedIn'); 
     this.router.navigate(['/login']);
   }
 
