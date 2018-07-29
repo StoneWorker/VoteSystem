@@ -5,15 +5,15 @@ import { InMemoryDbService} from 'angular-in-memory-web-api';
 export class InMemoryDataService implements InMemoryDbService {
   createDb(){
     const users =[
-      {id: 1, name: 'Mr. Nice', password:'abc123',   selectedDate:'', selectedPlace: '', voted: false},
-      {id: 2, name: 'Naco',     password: 'abcabc',  selectedDate:'', selectedPlace: '', voted: false},
-      {id: 3, name: 'Bobo',     password:'abc222',   selectedDate:'', selectedPlace: '', voted: false},
-      {id: 4, name: 'Peter',    password: 'abc223',  selectedDate:'', selectedPlace: '', voted: false},
-      {id: 5, name: 'Magneta',  password: '1234www', selectedDate:'', selectedPlace: '', voted: false},
-      {id: 6, name: 'Lily',     password: '123456', selectedDate:'', selectedPlace: '', voted: false},
-      {id: 7, name: 'Jim',      password: 'sss123',    selectedDate:'', selectedPlace: '', voted: false},
-      {id: 8, name: 'Jim123',      password: 'sss123', selectedDate:'', selectedPlace: '', voted: false},
-      {id: 9, name: 'JimJim',      password: 'sss123', selectedDate:'', selectedPlace: '', voted: false},    
+      {id: 1, name: 'Mr. Nice', password: '670b14728ad9902aecba32e22fa4f6bd',   selectedDate:'', selectedPlace: '', voted: false},
+      {id: 2, name: 'Naco',     password: '670b14728ad9902aecba32e22fa4f6bd',  selectedDate:'', selectedPlace: '', voted: false},
+      {id: 3, name: 'Bobo',     password: '670b14728ad9902aecba32e22fa4f6bd',   selectedDate:'', selectedPlace: '', voted: false},
+      {id: 4, name: 'Peter',    password: '670b14728ad9902aecba32e22fa4f6bd',  selectedDate:'', selectedPlace: '', voted: false},
+      {id: 5, name: 'Magneta',  password: '670b14728ad9902aecba32e22fa4f6bd', selectedDate:'', selectedPlace: '', voted: false},
+      {id: 6, name: 'Lily',     password: '670b14728ad9902aecba32e22fa4f6bd', selectedDate:'', selectedPlace: '', voted: false},
+      {id: 7, name: 'Jim',      password: '4875b3210ffa9463be42c307d7e97c07',    selectedDate:'', selectedPlace: '', voted: false},
+      {id: 8, name: 'Jim123',   password: '670b14728ad9902aecba32e22fa4f6bd', selectedDate:'', selectedPlace: '', voted: false},
+      {id: 9, name: 'JimJim',   password: '670b14728ad9902aecba32e22fa4f6bd', selectedDate:'', selectedPlace: '', voted: false},    
     ];
     const dates =[
       {id: 1, name: '2018-6-6',   votedNumber: 0 },

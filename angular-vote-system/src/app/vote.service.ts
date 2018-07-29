@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from './user';
 import { VoteItem } from './vote-item';
 import { Observable } from 'rxjs';
+import { Md5} from "ts-md5/dist/md5";
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -29,8 +30,9 @@ export class VoteService implements CanActivate{
 
   checkLogin(userName: string, password: string): boolean{
     this.getUsersByName(userName).subscribe(users =>{    
-        console.log("name included: " + users.length);        
-        this.userIndex = users.findIndex(user =>(user.name === userName && user.password === password));
+        console.log("name included: " + users.length);     
+        console.log(Md5.hashStr(password));    
+        this.userIndex = users.findIndex(user =>(user.name === userName && user.password === Md5.hashStr(password)));
         if(this.userIndex>-1){  
           console.log('success login');        
           this.user = users[this.userIndex];
