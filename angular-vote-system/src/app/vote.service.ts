@@ -84,7 +84,7 @@ export class VoteService implements CanActivate{
     return this.http.post<VoteItem>(url, voteItem, httpOptions);
   }
 
-  updatevoteItem(name: string, voteItem: VoteItem):Observable<VoteItem>{
+  updatevoteItem(name: string, voteItem: VoteItem):Observable<any>{
     const  url=`api/${name}`;
     return this.http.put<VoteItem>(url, voteItem, httpOptions);
   }
