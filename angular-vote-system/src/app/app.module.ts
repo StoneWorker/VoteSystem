@@ -28,7 +28,7 @@ import { VoteResultComponent } from './vote-result/vote-result.component';
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService,{dataEncapsulation:false})
+    //HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService,{dataEncapsulation:false})
   ],
   providers: [VoteService],
   bootstrap: [AppComponent]

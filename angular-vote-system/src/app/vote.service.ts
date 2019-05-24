@@ -19,6 +19,8 @@ export class VoteService implements CanActivate{
   //user: User; 
   user: User = sessionStorage['user']!=null?JSON.parse(sessionStorage['user']):null;
   userIndex: number;
+  //Base server path
+  baseServerPath: string ="http://localhost:53604/";
 
   canActivate(route: ActivatedRouteSnapshot,state: RouterStateSnapshot): boolean {
     console.log('VoteService.canActivate method called');
@@ -56,36 +58,36 @@ export class VoteService implements CanActivate{
   }
 
   getUsers():Observable<User[]>{
-    const url=`api/users`;
+    const url=`${this.baseServerPath}api/users`;
     return this.http.get<User[]>(url);
   }
 
   getUsersByName(name: string):Observable<User[]>{
-    const url=`api/users/?name=${name}`;
+    const url=`${this.baseServerPath}api/users/?name=${name}`;
     return this.http.get<User[]>(url);
   }
 
   updateUser(user: User): Observable<any>{
-    return this.http.put('api/users', user, httpOptions); 
+    return this.http.put(`${this.baseServerPath}api/users`, user, httpOptions); 
   }
 
   getvoteItems(name: string):Observable<VoteItem[]>{
-    const  url=`api/${name}`;
+    const  url=`${this.baseServerPath}api/${name}`;
     return this.http.get<VoteItem[]>(url);
   }
 
   getvoteItem(name: string, id: number):Observable<VoteItem>{
-    const  url=`api/${name}/${id}`;
+    const  url=`${this.baseServerPath}api/${name}/${id}`;
     return this.http.get<VoteItem>(url);
   }
 
   addvoteItem(name: string, voteItem: VoteItem):Observable<VoteItem>{
-    const  url=`api/${name}`;
+    const  url=`${this.baseServerPath}api/${name}`;
     return this.http.post<VoteItem>(url, voteItem, httpOptions);
   }
 
   updatevoteItem(name: string, voteItem: VoteItem):Observable<any>{
-    const  url=`api/${name}`;
+    const  url=`${this.baseServerPath}api/${name}`;
     return this.http.put<VoteItem>(url, voteItem, httpOptions);
   }
 
