@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
     this.voteService.logout();
   }
 
-  constructor(private voteService: VoteService) { }
+  constructor(public voteService: VoteService) { }
 
   ngOnInit() {
   }

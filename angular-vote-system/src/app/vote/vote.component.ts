@@ -70,7 +70,7 @@ export class VoteComponent implements OnInit {
     this.voteService.logout();
   }
 
-  constructor(private voteService: VoteService ) {}
+  constructor(public voteService: VoteService ) {}
 
   ngOnInit() {
     this.getvoteItems();
