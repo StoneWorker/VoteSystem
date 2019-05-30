@@ -20,7 +20,7 @@ export class VoteService implements CanActivate{
   user: User = sessionStorage['user']!=null?JSON.parse(sessionStorage['user']):null;
   userIndex: number;
   //Base server path
-  baseServerPath: string ="http://localhost:53604/";
+  baseServerPath: string ="http://192.168.100.101:80/";
 
   canActivate(route: ActivatedRouteSnapshot,state: RouterStateSnapshot): boolean {
     console.log('VoteService.canActivate method called');
@@ -72,6 +72,7 @@ export class VoteService implements CanActivate{
   }
 
   getvoteItems(name: string):Observable<VoteItem[]>{
+
     const  url=`${this.baseServerPath}api/${name}`;
     return this.http.get<VoteItem[]>(url);
   }
