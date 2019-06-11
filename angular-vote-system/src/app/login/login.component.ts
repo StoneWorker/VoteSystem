@@ -10,11 +10,13 @@ import { User } from '../user';
 })
 export class LoginComponent implements OnInit {
   
-  user = new User; 
+  userName: string;
+  userPassword: string; 
+
 
   login() {    
-    console.log("LoginComponent.login method called!   "+ "username: "+this.user.name+    "  password: "+this.user.password); 
-    this.voteService.checkLogin(this.user.name,this.user.password);    
+    console.log("LoginComponent.login method called!   "+ "username: "+this.userName+    "  password: "+this.userPassword); 
+    this.voteService.checkLogin(this.userName,this.userPassword);    
   }
 
   logout(){

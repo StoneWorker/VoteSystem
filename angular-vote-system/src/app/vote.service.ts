@@ -18,9 +18,9 @@ export class VoteService implements CanActivate{
   redirectUrl: string ="vote";
   //user: User; 
   user: User = sessionStorage['user']!=null?JSON.parse(sessionStorage['user']):null;
-  userIndex: number;
+  //userIndex: number;  
   //Base server path
-  baseServerPath: string ="http://192.168.100.101:80/";
+  baseServerPath: string ="http://localhost:53604/";
 
   canActivate(route: ActivatedRouteSnapshot,state: RouterStateSnapshot): boolean {
     console.log('VoteService.canActivate method called');
@@ -30,6 +30,7 @@ export class VoteService implements CanActivate{
     return false;
   }
 
+/*
   checkLogin(userName: string, password: string): boolean{
     this.getUsersByName(userName).subscribe(users =>{    
         console.log("name included: " + users.length);     
@@ -50,11 +51,36 @@ export class VoteService implements CanActivate{
     });    
     return false; 
   }
+*/
+
+  checkLogin(userName: string, password: string): boolean{
+    console.log(Md5.hashStr(password)); 
+    this.getLoginResult([userName, Md5.hashStr(password).toString()]).subscribe(user =>{                 
+        if(user!==null){  
+          console.log('success login');     
+          this.isLoggedIn = true;     
+          this.user = user;          
+          this.updateSessionStorage(this.user,this.isLoggedIn);
+          this.router.navigate([this.redirectUrl]);
+          console.log(this.user);
+          return true;
+        }
+        else {
+          alert("user name or password is not right!");          
+        }         
+    });    
+    return false; 
+  }
 
   updateSessionStorage(user:User,isLoggedIn?:boolean){
     sessionStorage.setItem('user', JSON.stringify(user));
     if(isLoggedIn!=null)
     sessionStorage.setItem('isLoggedIn', JSON.stringify(isLoggedIn));
+  }
+  
+  getLoginResult(user:string[]):Observable<any>{  
+    const url=`${this.baseServerPath}api/users`;
+    return this.http.post<any>(url, user, httpOptions);
   }
 
   getUsers():Observable<User[]>{
