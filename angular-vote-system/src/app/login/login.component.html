@@ -20,6 +20,8 @@
     </div>
     <button type="submit" class="btn btn-success" [disabled]="!loginForm.form.valid">Login</button>
   </form> 
+  <br>
+  <a routerLink="/register" routerLinkActive="active">Go to Register</a>
 </div>
 
 <div *ngIf="voteService.isLoggedIn">

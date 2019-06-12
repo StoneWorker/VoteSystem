@@ -4,7 +4,7 @@ h2{
     font-weight: lighter;
 }
 
-button {
+button,a {
     background-color: #eee;
     border: none;
     padding: 5px 10px;
@@ -15,6 +15,6 @@ button {
     color: rgb(63, 54, 55);
   }
   
-button:hover {
+button,a:hover {
     background-color: #cfd8dc;
   }

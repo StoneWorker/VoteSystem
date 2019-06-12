@@ -83,6 +83,11 @@ export class VoteService implements CanActivate{
     return this.http.post<any>(url, user, httpOptions);
   }
 
+  register(user:string[]):Observable<boolean>{  
+    const url=`${this.baseServerPath}api/users`;
+    return this.http.put<boolean>(url, user, httpOptions);
+  }
+
   getUsers():Observable<User[]>{
     const url=`${this.baseServerPath}api/users`;
     return this.http.get<User[]>(url);

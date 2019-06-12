@@ -13,6 +13,7 @@ import { VoteComponent } from './vote/vote.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LoginComponent } from './login/login.component';
 import { VoteResultComponent } from './vote-result/vote-result.component';
+import { RegisterComponent } from './register/register.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { VoteResultComponent } from './vote-result/vote-result.component';
     VoteComponent,
     PageNotFoundComponent,
     LoginComponent,
-    VoteResultComponent
+    VoteResultComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
