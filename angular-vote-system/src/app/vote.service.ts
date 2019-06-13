@@ -55,7 +55,7 @@ export class VoteService implements CanActivate{
 
   checkLogin(userName: string, password: string): boolean{
     console.log(Md5.hashStr(password)); 
-    this.getLoginResult([userName, Md5.hashStr(password).toString()]).subscribe(user =>{                 
+    this.getLoginResult([userName, Md5.hashStr(password).toString(),"checkUser"]).subscribe(user =>{                 
         if(user!==null){  
           console.log('success login');     
           this.isLoggedIn = true;     
@@ -85,7 +85,7 @@ export class VoteService implements CanActivate{
 
   register(user:string[]):Observable<boolean>{  
     const url=`${this.baseServerPath}api/users`;
-    return this.http.put<boolean>(url, user, httpOptions);
+    return this.http.post<boolean>(url, user, httpOptions);
   }
 
   getUsers():Observable<User[]>{

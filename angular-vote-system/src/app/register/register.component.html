@@ -18,6 +18,17 @@
             <div *ngIf="password1.errors.minlength">Password must be at least 6 characters long.</div>     
         </div>    
       </div>
-      <button type="submit" class="btn btn-success" [disabled]="!loginForm.form.valid">Register</button>
+      <div class="form-group">
+        <label for="psd2">ConfirmPassword:</label>
+        <input type="password" class="form-control" id="psd2" required minlength="6" placeholder="passwordtoconfirm" [(ngModel)]="userPasswordConfirm" name="passwordConfirm" #password2="ngModel">
+        <div *ngIf="password2.invalid && (password2.dirty || password2.touched)" class="alert alert-danger">      
+            <div *ngIf="password2.errors.required">Password is required.</div>
+            <div *ngIf="password2.errors.minlength">Password must be at least 6 characters long.</div>                        
+        </div>       
+        <div *ngIf="(password1.value != password2.value) && (password2.dirty || password2.touched)" class="alert alert-danger">
+            <div *ngIf="password1.value!= password2.value">Password not match.</div>                      
+        </div>        
+      </div>
+      <button type="submit" class="btn btn-success" [disabled]="!loginForm.form.valid || password1.value!= password2.value">Register</button>
     </form> 
  

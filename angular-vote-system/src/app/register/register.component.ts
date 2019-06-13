@@ -14,7 +14,7 @@ export class RegisterComponent implements OnInit {
 
   register() {    
     console.log("RegisterComponent called!   "+ "username: "+this.userName+    "  password: "+this.userPassword); 
-    this.voteService.register([this.userName,Md5.hashStr(this.userPassword).toString()]).subscribe(result =>
+    this.voteService.register([this.userName,Md5.hashStr(this.userPassword).toString(),"register"]).subscribe(result =>
       {
         if(result){
           alert("You have register Successfully! Please Login!");
