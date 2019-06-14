@@ -11,6 +11,7 @@ export class RegisterComponent implements OnInit {
 
   userName: string;
   userPassword: string; 
+  passwordConfirm: string;
 
   register() {    
     console.log("RegisterComponent called!   "+ "username: "+this.userName+    "  password: "+this.userPassword); 
